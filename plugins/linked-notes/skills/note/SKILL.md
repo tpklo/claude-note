@@ -25,7 +25,7 @@ User input → Identify project → Determine note type
 
 ## Step 0: Load Config (every run)
 
-Read `~/.claude/linked-notes.config.json`. If it exists and `vault_path` points to an existing directory → load it and skip to Step 1. If config exists but `vault_path` no longer exists: re-detect/re-ask ONLY the vault path (and recompute `vault_name`); preserve all other config keys.
+Read `~/.config/linked-notes/config.json`. If it exists and `vault_path` points to an existing directory → load it and skip to Step 1. If config exists but `vault_path` no longer exists: re-detect/re-ask ONLY the vault path (and recompute `vault_name`); preserve all other config keys.
 
 **Config schema:**
 
@@ -49,13 +49,13 @@ Read `~/.claude/linked-notes.config.json`. If it exists and `vault_path` points 
    - Windows: `%APPDATA%\obsidian\obsidian.json`
 
    Parse `vaults` — each entry has `path`; the one with `"open": true` is the currently-open vault (recommend it first). If the registry is missing, ask the user for their vault path directly.
-2. **Ask which vault** (AskUserQuestion, recommended = the `open: true` one).
+2. **Ask which vault** (present the detected vaults as choices; recommended = the `open: true` one).
 3. **Ask folder layout:**
    - "PARA (scaffold for me)" → create `00-Inbox/ 10-Projects/ 40-Archive/ 50-MOCs/` in the vault, use defaults above
    - "I already have a projects folder" → ask for its name, set `projects_dir` (leave the others as defaults but do not create them)
    - "Flat vault" → set `projects_dir` to `""` (projects become top-level folders)
 4. **Notion (optional):** only if Notion MCP tools are available in the session, ask "Sync note status to a Notion database?" If yes, ask for the database ID (from the DB URL). Otherwise write `"notion": { "enabled": false, "database_id": "" }`.
-5. **Write the config** with the Write tool (`vault_name` = basename of `vault_path`), show the user the saved JSON, then continue to Step 1.
+5. **Write the config file** (create the directory if needed; `vault_name` = basename of `vault_path`), show the user the saved JSON, then continue to Step 1.
 
 Never hardcode paths — every later step interpolates from this config.
 
@@ -419,5 +419,5 @@ This confirmation doubles as a quick sanity check — the user can spot if a lin
 - Every note must be self-contained — readable without needing to open 5 other files
 - The `related` frontmatter field is for machine consumption — keep it clean, use wikilink format
 - Link to MOCs in `{mocs_dir}/` if a relevant topic hub exists (skip if the folder doesn't exist)
-- If capturing from an active Claude Code session, run the **Full-Session Sweep** (see Step 1) — walk the whole conversation start to finish and extract every file path, command, error, decision, and dead-end. Never summarize a working session from memory; that's where the details that matter get dropped.
+- If capturing from an active agent session, run the **Full-Session Sweep** (see Step 1) — walk the whole conversation start to finish and extract every file path, command, error, decision, and dead-end. Never summarize a working session from memory; that's where the details that matter get dropped.
 - The scan step (Step 3) is what makes this skill valuable — don't skip it, even for quick captures

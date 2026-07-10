@@ -6,7 +6,7 @@
       "name": "linked-notes",
       "source": "./plugins/linked-notes",
       "description": "Linked project notes for Obsidian with auto vault detection and optional Notion sync",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": { "name": "tpklo" },
       "license": "MIT"
     }

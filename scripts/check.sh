@@ -17,6 +17,6 @@ else
   echo "SKIP leak scan (internal/private-patterns.txt not present — maintainer-only check)"
 fi
 
-grep -q 'linked-notes.config.json' plugins/linked-notes/skills/note/SKILL.md || { echo "FAIL: SKILL.md not config-driven"; exit 1; }
+grep -q 'linked-notes/config.json' plugins/linked-notes/skills/note/SKILL.md || { echo "FAIL: SKILL.md not config-driven"; exit 1; }
 
 echo "ALL OK"
