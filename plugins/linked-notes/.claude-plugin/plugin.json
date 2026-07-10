@@ -1,0 +1,9 @@
+{
+  "name": "linked-notes",
+  "displayName": "Linked Notes for Obsidian",
+  "description": "Create project notes in your Obsidian vault with automatic wikilinks, sibling discovery, backlinks, and optional Notion sync. One-time setup auto-detects your vaults.",
+  "version": "0.1.0",
+  "author": { "name": "tpklo" },
+  "license": "MIT",
+  "keywords": ["obsidian", "notes", "pkm", "notion", "knowledge-graph"]
+}
