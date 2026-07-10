@@ -1,8 +1,12 @@
 # linked-notes — Obsidian project notes for AI coding agents
 
+[![skills.sh](https://skills.sh/b/tpklo/claude-note)](https://skills.sh/tpklo/claude-note)
+
 Every note gets wired into your vault's knowledge graph: wikilinked to its
 project, linked to related sibling notes, registered in the project's hub
 note, and (optionally) synced to a Notion task database.
+
+![demo](assets/demo.gif)
 
 The skill uses the cross-platform [Agent Skills](https://agentskills.io)
 `SKILL.md` format — it works in Claude Code, Codex CLI, Gemini CLI, Cursor,
@@ -19,7 +23,13 @@ and any other agent that reads the standard.
 
 Then run `/linked-notes:note` once.
 
-### Codex CLI / Gemini CLI / Cursor / other agents
+### Any agent via skills.sh
+
+```bash
+npx skills add tpklo/claude-note
+```
+
+### Codex CLI / Gemini CLI / Cursor / other agents (manual)
 
 Copy the skill folder into your agent's skills directory:
 
